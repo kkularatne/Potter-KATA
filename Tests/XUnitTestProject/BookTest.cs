@@ -4,7 +4,7 @@ using Xunit;
 
 namespace XUnitTestProject
 {
-    public class UnitTest1
+    public class BookTest
     {
         [Theory]
         [InlineData(1, "8.00")]
@@ -19,17 +19,17 @@ namespace XUnitTestProject
         [InlineData(10, "60.00")]
         [InlineData(11, "68.00")]
         [InlineData(12, "75.20")]
-        public void Test1(int count, string discountedPrice)
+        public void CalculateDiscountedPrice_Test(int bookCount, string expectedDiscountedPrice)
         {
             // Arrange
             var unitPrice = 8m;
-            var book = new Book(unitPrice, count);
+            var book = new Book(unitPrice, bookCount);
 
             // Act
             var result = book.CalculateDiscountedPrice();
 
             // Assert
-            Assert.Equal(Convert.ToDecimal(discountedPrice), result);
+            Assert.Equal(Convert.ToDecimal(expectedDiscountedPrice), result);
         }
     }
 }
